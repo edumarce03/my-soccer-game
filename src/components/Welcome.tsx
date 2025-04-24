@@ -19,7 +19,6 @@ const Welcome = ({ onStartGame }: WelcomeProps) => {
 
     setIsSubmitting(true);
 
-    // Pequeña animación antes de pasar al juego
     setTimeout(() => {
       onStartGame(playerName.trim());
       setIsSubmitting(false);
@@ -27,16 +26,19 @@ const Welcome = ({ onStartGame }: WelcomeProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[85vh] font-inter">
-      <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg">
+    <div className="flex flex-col items-center justify-center min-h-[95vh] font-inter">
+      <div className="w-full max-w-sm p-4 md:max-w-md md:p-8 bg-cyan-50/5 backdrop-blur-md rounded-xl shadow-2xl border border-white/10">
         <div className="mb-8 text-center">
-          <div className="flex justify-center mb-4">
-            <span className="text-5xl">⚽</span>
+          <div className="flex justify-center mb-5">
+            <div className="relative">
+              <span className="text-5xl filter drop-shadow-lg">⚽</span>
+              <div className="absolute -right-1 -top-1 w-4 h-4 bg-cyan-400 rounded-full animate-pulse opacity-75"></div>
+            </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+          <h1 className="text-3xl font-bold text-white mb-2 text-shadow-sm">
             Adivina el Jugador
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-200">
             Pon a prueba tus conocimientos futbolísticos
           </p>
         </div>
@@ -45,7 +47,7 @@ const Welcome = ({ onStartGame }: WelcomeProps) => {
           <div>
             <label
               htmlFor="playerName"
-              className="block text-sm font-medium text-gray-700 mb-1"
+              className="block text-sm font-medium text-gray-200 mb-3"
             >
               ¿Cómo te llamas?
             </label>
@@ -59,36 +61,36 @@ const Welcome = ({ onStartGame }: WelcomeProps) => {
                   setPlayerName(e.target.value);
                   if (error) setError("");
                 }}
-                className="w-full px-4 py-3 bg-gray-50 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none transition-all duration-200 text-gray-800 placeholder-gray-400"
+                className="w-full px-4 py-3 bg-white/10 backdrop-blur rounded-lg border border-white/20 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 focus:outline-none transition-all duration-200 text-white placeholder-gray-400"
                 placeholder="Escribe tu nombre aquí"
               />
               {playerName.length > 0 && (
                 <button
                   type="button"
                   onClick={() => setPlayerName("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
                   aria-label="Limpiar input"
                 >
                   ✕
                 </button>
               )}
             </div>
-            {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
+            {error && <p className="mt-2 text-sm text-red-300">{error}</p>}
           </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-blue-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 ${
+            className={`w-full bg-cyan-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-700  ${
               isSubmitting ? "opacity-75 cursor-not-allowed" : ""
             }`}
           >
-            {isSubmitting ? "Iniciando..." : "Comenzar"}
+            {isSubmitting ? "Iniciando..." : "Comenzar el Juego"}
           </button>
         </form>
 
         <div className="mt-8 text-center">
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-300 text-sm">
             Adivina jugadores con el mínimo de pistas posible
           </p>
           <p className="text-gray-400 text-xs mt-1">
