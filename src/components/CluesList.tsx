@@ -12,14 +12,14 @@ const CluesList = ({ clues, shownClues, attempts }: CluesListProps) => {
     <div className="w-full">
       <h3 className="text-lg font-medium text-white mb-3">Pistas:</h3>
 
-      <div className="space-y-2 h-[60px] md:h-[150px] overflow-y-auto pr-2 custom-scrollbar">
+      <div className="space-y-2 h-[120px] md:h-[150px] overflow-y-auto pr-2 custom-scrollbar">
         {shownClues.map((index, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3 }}
-            className="p-2.5 bg-white/5 backdrop-blur-sm rounded-lg border-l-4 border-cyan-600"
+            className="p-2.5 bg-white/5 backdrop-blur-sm rounded-lg border-l-4 border-indigo-600"
           >
             <p className="text-gray-200 text-xs">📌 {clues[index]}</p>
           </motion.div>

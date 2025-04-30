@@ -73,7 +73,7 @@ const GameResult = ({
       <div className="flex flex-col sm:flex-row gap-3">
         <button
           onClick={onPlayAgain}
-          className="flex-1 bg-cyan-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-700 "
+          className="flex-1 bg-indigo-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:bg-indigo-700 "
         >
           Jugar de nuevo
         </button>

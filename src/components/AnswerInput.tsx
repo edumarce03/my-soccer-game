@@ -41,11 +41,7 @@ const AnswerInput = ({
 
   return (
     <div className="w-full">
-      <h3 className="text-lg font-medium text-white mb-4 text-center">
-        ¿Quién es este jugador?
-      </h3>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-2">
         <div>
           <label htmlFor="answer" className="sr-only">
             Tu respuesta
@@ -59,17 +55,17 @@ const AnswerInput = ({
               setAnswer(e.target.value);
               if (error) setError("");
             }}
-            className="w-full px-4 py-3 bg-white/10 backdrop-blur rounded-lg border border-white/20 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 focus:outline-none transition-all duration-200 text-white placeholder-gray-400"
+            className="w-full px-3 py-2 bg-white/10 backdrop-blur rounded-md border border-white/20 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/20 focus:outline-none transition-all duration-200 text-white placeholder-gray-400 text-xs md:text-sm"
             placeholder="Escribe el nombre del jugador..."
             autoComplete="off"
           />
-          {error && <p className="mt-1 text-sm text-red-300">{error}</p>}
+          {error && <p className="mt-1 text-xs text-red-300">{error}</p>}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex gap-2">
           <button
             type="submit"
-            className="flex-1 bg-cyan-600 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-300/50 focus:ring-opacity-50"
+            className="flex-1 bg-indigo-600 text-white font-medium py-2 px-3 rounded-[4px] transition-all duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300/50 focus:ring-opacity-50 text-xs md:text-sm"
           >
             Comprobar
           </button>
@@ -78,23 +74,17 @@ const AnswerInput = ({
             type="button"
             onClick={onRequestClue}
             disabled={!cluesAvailable}
-            className={`flex-1 border font-medium py-3 px-4 rounded-lg transition-all duration-200 focus:outline-none
+            className={`flex-1 border font-medium py-2 px-3 rounded-[4px] transition-all duration-200 focus:outline-none text-xs md:text-sm
               ${
                 cluesAvailable
                   ? "border-white/20 text-white hover:bg-white/5"
                   : "border-white/10 text-white/30 cursor-not-allowed"
               }`}
           >
-            {cluesAvailable ? "Otra pista" : "No hay más pistas"}
+            {cluesAvailable ? "Otra pista" : "No más pistas"}
           </button>
         </div>
       </form>
-
-      <div className="mt-4 text-center">
-        <p className="text-gray-300 text-sm">
-          Intenta adivinar con el menor número de pistas posible.
-        </p>
-      </div>
     </div>
   );
 };

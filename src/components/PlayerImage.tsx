@@ -10,6 +10,7 @@ interface PlayerImageProps {
 const PlayerImage = ({
   imageUrl,
   playerName,
+
   nationality,
 }: PlayerImageProps) => {
   const getFlagUrl = (country: string) => {
@@ -38,43 +39,32 @@ const PlayerImage = ({
   };
 
   return (
-    <div className="aspect-square w-full max-w-[140px] md:max-w-[200px] mx-auto rounded-xl overflow-hidden shadow-lg bg-white/5 border border-white/10 relative">
+    <div className="w-full h-full relative">
       {imageUrl ? (
         <div className="relative w-full h-full">
           <motion.img
-            initial={{ filter: "blur(10px)", opacity: 0.8 }}
-            animate={{ filter: "blur(0px)", opacity: 1 }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0.8 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
             src={imageUrl}
             alt={playerName}
             className="w-full h-full object-cover"
           />
 
           {nationality && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5, type: "spring" }}
-              className="absolute bottom-2 right-2 w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-lg"
-            >
+            <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md">
               <img
                 src={getFlagUrl(nationality)}
                 alt={`Bandera de ${nationality}`}
                 className="w-full h-full object-cover"
               />
-            </motion.div>
+            </div>
           )}
         </div>
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center p-4">
-          <div className="size-20 md:size-40 bg-white/10 rounded-full flex items-center justify-center mb-3">
-            <svg
-              className="w-12 h-12 text-white/30"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4z" />
-            </svg>
+        <div className="w-full h-full flex items-center justify-center bg-gray-800/80">
+          <div className="size-24 bg-indigo-900/80 rounded-full flex items-center justify-center border-2 border-indigo-500/30">
+            <span className="text-5xl font-bold text-white">?</span>
           </div>
         </div>
       )}
